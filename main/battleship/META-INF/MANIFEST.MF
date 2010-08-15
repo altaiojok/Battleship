@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: battleship/view;battleship/model;battleship.view
+Main-Class: battleship.view.ConsoleUserInterface
+
