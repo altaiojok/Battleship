@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="7003f29b-a1a4-48d8-a0fb-9227d3ea6c4a" name="Default" comment="" />
-    <ignored path=".idea/workspace.xml" />
     <ignored path="Battleship.iws" />
+    <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +66,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -76,12 +76,26 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="GameTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/battleship/controller/GameTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="29" selection-start="517" selection-end="517" vertical-scroll-proportion="0.18099548">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="GIT_EXECUTABLE" value="/usr/local/git/bin/git" />
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -100,8 +114,8 @@
         <option value="$PROJECT_DIR$/main/battleship/model/OverlappingException.java" />
         <option value="$PROJECT_DIR$/main/battleship/view/ConsoleUserInterface.java" />
         <option value="$PROJECT_DIR$/main/battleship/view/UserInterface.java" />
-        <option value="$PROJECT_DIR$/test/battleship/controller/GameTest.java" />
         <option value="$PROJECT_DIR$/test/battleship/view/TestUserInterfaceSpy.java" />
+        <option value="$PROJECT_DIR$/test/battleship/controller/GameTest.java" />
       </list>
     </option>
   </component>
@@ -143,6 +157,8 @@
       <sortByType ProjectPane="false" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,9 +333,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,9 +352,9 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -641,24 +655,24 @@
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="22" width="1420" height="812" extended-state="1" />
+    <frame x="12" y="22" width="1420" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2846821" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28323698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24070022" sideWeight="0.3367052" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24070022" sideWeight="0.70520234" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24070022" sideWeight="0.70520234" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28323698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22687861" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2846821" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33092487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32658958" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -716,16 +730,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/controller/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="40" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="40" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/controller/Labels.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="6" column="0" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/controller/labels.properties">
@@ -735,72 +745,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/model/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.018099548">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.018099548" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/model/Grid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="82" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="82" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/model/OffTheGridException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/model/Ship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="39" selection-end="39" vertical-scroll-proportion="0.036199097">
-          <folding />
-        </state>
+        <state line="2" column="12" selection-start="39" selection-end="39" vertical-scroll-proportion="0.036199097" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/battleship/view/TestUserInterfaceSpy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="50" selection-end="50" vertical-scroll-proportion="0.054298643">
-          <folding />
-        </state>
+        <state line="3" column="0" selection-start="50" selection-end="50" vertical-scroll-proportion="0.054298643" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/battleship/model/GridTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="101" selection-end="101" vertical-scroll-proportion="0.108597286">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/battleship/controller/GameTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="285" selection-end="285" vertical-scroll-proportion="0.07239819">
-          <folding />
-        </state>
+        <state line="6" column="13" selection-start="101" selection-end="101" vertical-scroll-proportion="0.108597286" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/view/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="63" selection-start="93" selection-end="93" vertical-scroll-proportion="0.054298643">
-          <folding />
-        </state>
+        <state line="3" column="63" selection-start="93" selection-end="93" vertical-scroll-proportion="0.054298643" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/view/ConsoleUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="169" selection-end="169" vertical-scroll-proportion="0.09049774">
-          <folding />
-        </state>
+        <state line="8" column="44" selection-start="169" selection-end="169" vertical-scroll-proportion="0.09049774" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/battleship/model/OverlappingException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="40" selection-end="40" vertical-scroll-proportion="0.036199097">
+        <state line="2" column="13" selection-start="40" selection-end="40" vertical-scroll-proportion="0.036199097" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/battleship/controller/GameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="29" selection-start="517" selection-end="517" vertical-scroll-proportion="0.18099548">
           <folding />
         </state>
       </provider>
