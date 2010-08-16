@@ -3,7 +3,7 @@ package battleship.model;
 /**
  * Maintains the status and ship information of a cell on a grid.
  */
-final class Cell {
+public final class Cell {
 
     private CellStatus status;
     private Ship ship;
@@ -11,7 +11,7 @@ final class Cell {
     /**
      * Creates a new empty cell.
      */
-    Cell() {
+    public Cell() {
         status = CellStatus.EMPTY;
     }
 
