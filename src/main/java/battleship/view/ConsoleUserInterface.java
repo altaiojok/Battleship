@@ -1,9 +1,7 @@
 package battleship.view;
 
-import battleship.controller.Game;
 import battleship.model.Grid;
-
-import java.io.IOException;
+import battleship.controller.Game;
 
 /**
  * Implementation for standard Java console.

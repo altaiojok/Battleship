@@ -44,7 +44,7 @@ final class Cell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        battleship.model.Cell cell = (battleship.model.Cell) o;
+        Cell cell = (Cell) o;
 
         return ship == cell.ship && status == cell.status;
     }

@@ -1,7 +1,6 @@
 package battleship.model;
 
 import junit.framework.TestCase;
-
 import java.util.EnumSet;
 import java.util.Iterator;
 

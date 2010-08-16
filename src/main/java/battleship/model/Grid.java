@@ -110,13 +110,13 @@ public class Grid implements Iterable<Cell> {
                 throw new OffTheGridException();
             }
 
-            if (cell.getStatus() != battleship.model.CellStatus.EMPTY) {
+            if (cell.getStatus() != CellStatus.EMPTY) {
                 rollback(coordsPlaced);
                 throw new OverlappingException();
             }
 
             cell.setShip(ship);
-            cell.setStatus(battleship.model.CellStatus.PLACED);
+            cell.setStatus(CellStatus.PLACED);
             coordsPlaced.add(new Coordinate(x, y));
         }
     }
@@ -143,9 +143,9 @@ public class Grid implements Iterable<Cell> {
             throw new OffTheGridException();
         }
 
-        final boolean isNewHit = cell.getStatus() == battleship.model.CellStatus.PLACED;
-        cell.setStatus(isNewHit || cell.getStatus() == battleship.model.CellStatus.HIT ?
-                       battleship.model.CellStatus.HIT : battleship.model.CellStatus.MISSED);
+        final boolean isNewHit = cell.getStatus() == CellStatus.PLACED;
+        cell.setStatus(isNewHit || cell.getStatus() == CellStatus.HIT ?
+                       CellStatus.HIT : CellStatus.MISSED);
 
         if (isNewHit && !isShipAfloat(cell.getShip())) {
             sunkenShips.add(cell.getShip());
@@ -164,7 +164,7 @@ public class Grid implements Iterable<Cell> {
         return matchingCellExists(new Matcher<Cell>() {
             @Override
             public boolean match(Cell cell) {
-                return cell.getShip() == ship && cell.getStatus() == battleship.model.CellStatus.PLACED;
+                return cell.getShip() == ship && cell.getStatus() == CellStatus.PLACED;
 
             }
         });
@@ -179,7 +179,7 @@ public class Grid implements Iterable<Cell> {
         return matchingCellExists(new Matcher<Cell>() {
             @Override
             public boolean match(final Cell cell) {
-                return cell.getStatus() == battleship.model.CellStatus.PLACED;
+                return cell.getStatus() == CellStatus.PLACED;
 
             }
         });
