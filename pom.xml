@@ -7,7 +7,7 @@
     <groupId>altaiojok</groupId>
     <artifactId>Battleship</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <!-- comment -->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
