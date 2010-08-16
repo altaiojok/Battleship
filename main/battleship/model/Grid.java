@@ -7,7 +7,7 @@ import java.util.*;
  * grid will default to DEFAULT_SIZE. Each cell on the Grid is populated
  * with a Cell instance, which maintains the state of ship placement and and hits.
  */
-public class Grid implements Iterable<Grid.Cell> {
+public class Grid implements Iterable<Cell> {
     public static final int DEFAULT_SIZE = 10;
 
     private final int size;
@@ -22,9 +22,9 @@ public class Grid implements Iterable<Grid.Cell> {
     }
 
     /**
-     * Create a grid of a specified size.
+     * Create a square grid of a specified size.
      *
-     * @param size
+     * @param size of each side
      */
     public Grid(final int size) {
         for(Ship ship : Ship.values()) {
@@ -43,12 +43,12 @@ public class Grid implements Iterable<Grid.Cell> {
      * Reset the grid with all new cells.
      */
     void reset() {
-        GridIterator<Cell> iterator = iterator();
+        final CellIterator iterator = iterator();
         while(iterator.hasNext()) {
-            Cell c = iterator.next();
-            iterator.decorate(new Decoration<Cell>() {
+            iterator.next();
+            iterator.apply(new Transformation<Cell>() {
                 @Override
-                public Cell decorate(Cell cell) {
+                public Cell transform(Cell cell) {
                     return new Cell();
                 }
             });
@@ -110,13 +110,13 @@ public class Grid implements Iterable<Grid.Cell> {
                 throw new OffTheGridException();
             }
 
-            if (cell.getStatus() != Cell.CellStatus.EMPTY) {
+            if (cell.getStatus() != battleship.model.CellStatus.EMPTY) {
                 rollback(coordsPlaced);
                 throw new OverlappingException();
             }
 
             cell.setShip(ship);
-            cell.setStatus(Cell.CellStatus.PLACED);
+            cell.setStatus(battleship.model.CellStatus.PLACED);
             coordsPlaced.add(new Coordinate(x, y));
         }
     }
@@ -143,8 +143,9 @@ public class Grid implements Iterable<Grid.Cell> {
             throw new OffTheGridException();
         }
 
-        final boolean isNewHit = cell.getStatus() == Cell.CellStatus.PLACED;
-        cell.setStatus(isNewHit || cell.getStatus() == Cell.CellStatus.HIT ? Cell.CellStatus.HIT : Cell.CellStatus.MISSED);
+        final boolean isNewHit = cell.getStatus() == battleship.model.CellStatus.PLACED;
+        cell.setStatus(isNewHit || cell.getStatus() == battleship.model.CellStatus.HIT ?
+                       battleship.model.CellStatus.HIT : battleship.model.CellStatus.MISSED);
 
         if (isNewHit && !isShipAfloat(cell.getShip())) {
             sunkenShips.add(cell.getShip());
@@ -156,13 +157,14 @@ public class Grid implements Iterable<Grid.Cell> {
     /**
      * Iterates over this grid to determine if the specified ship is still alive.
      *
+     * @param ship to find on grid
      * @return true if any unsunk ships exist
      */
     private boolean isShipAfloat(final Ship ship) {
-        return matchingCellExists(new CellMatcher() {
+        return matchingCellExists(new Matcher<Cell>() {
             @Override
             public boolean match(Cell cell) {
-                return cell.getShip() == ship && cell.getStatus() == Cell.CellStatus.PLACED;
+                return cell.getShip() == ship && cell.getStatus() == battleship.model.CellStatus.PLACED;
 
             }
         });
@@ -174,10 +176,10 @@ public class Grid implements Iterable<Grid.Cell> {
      * @return true if any unsunk ships exist
      */
     public boolean areAnyShipsAfloat() {
-        return matchingCellExists(new CellMatcher() {
+        return matchingCellExists(new Matcher<Cell>() {
             @Override
             public boolean match(final Cell cell) {
-                return cell.getStatus() == Cell.CellStatus.PLACED;
+                return cell.getStatus() == battleship.model.CellStatus.PLACED;
 
             }
         });
@@ -185,18 +187,12 @@ public class Grid implements Iterable<Grid.Cell> {
 
     /**
      * Returns the cell at the given coordinate.
-     * @param coord
-     * @return
      */
     Cell getCell(Coordinate coord) {
         return cells[coord.getX()][coord.getY()];
     }
 
-    static interface CellMatcher {
-        boolean match(final Cell cell);
-    }
-
-    private boolean matchingCellExists(CellMatcher matcher) {
+    private boolean matchingCellExists(Matcher<Cell> matcher) {
         for (Cell c : this) {
             if (matcher.match(c)) {
                 return true;
@@ -236,108 +232,17 @@ public class Grid implements Iterable<Grid.Cell> {
         return EnumSet.copyOf(sunkenShips);
     }
 
-    /**
-     * Maintains the status and ship information of a cell on a grid.
-     */
-    static class Cell {
-
-        private CellStatus status;
-        private Ship ship;
-
-        /**
-         * Creates a new empty cell.
-         */
-        Cell() {
-            status = CellStatus.EMPTY;
-        }
-
-        CellStatus getStatus() {
-            return status;
-        }
-
-        void setStatus(final CellStatus status) {
-            this.status = status;
-        }
-
-        Ship getShip() {
-            return ship;
-        }
-
-        void setShip(final Ship ship) {
-            this.ship = ship;
-        }
-
-        @Override
-        public String toString() {
-            return "Cell{" +
-                    "status=" + status +
-                    ", ship=" + ship +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            Cell cell = (Cell) o;
-
-            return ship == cell.ship && status == cell.status;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = status.hashCode();
-            result = 31 * result + (ship != null ? ship.hashCode() : 0);
-            return result;
-        }
-
-        /**
-         * The status of a given cell.
-         */
-        static enum CellStatus {
-            /**
-             * Virgin cell with no placement or attacks.
-             */
-            EMPTY('O', false),
-
-            /**
-             * A ship is placed on this cell, but not yet attacked.
-             */
-            PLACED('#', true),
-
-            /**
-             * This cell has been attacked. There may or may not have been a ship here.
-             */
-            HIT('+', false),
-
-            /**
-             * This cell has been attacked. There may or may not have been a ship here.
-             */
-            MISSED('X', false);
-
-            private static final char MASK = EMPTY.display;
-            private final char display;
-            private final boolean maskable;
-
-            private CellStatus(char display, boolean maskable) {
-                this.display = display;
-                this.maskable = maskable;
-            }
-
-            char display(boolean mask) {
-                return mask && maskable ? MASK : display;
-            }
-
-        }
-    }
-
     @Override
-    public GridIterator<Cell> iterator() {
-        return new GridIterator();
+    public CellIterator iterator() {
+        return new CellIterator();
     }
 
-    class GridIterator<Cell> implements Iterator<Cell> {
+    /**
+     * Iterator to cycle over the cells on this grid. Starts at (0,0),
+     * moves across first row, then to subsequent rows, until completing all cells.
+     * e.g. (1,0), (2,0), (...,0), (1,1), (2,1), ..., (size - 1, size - 1)
+     */
+    private class CellIterator implements Iterator<Cell> {
         private int x = -1;
         private int y = -1;
 
@@ -355,7 +260,7 @@ public class Grid implements Iterable<Grid.Cell> {
             x = (x + 1 < size) ? x + 1 : 0;
             y = (y + 1 < size) && (x == 0) ? y + 1 : y;
 
-            return (Cell) cells[x][y]; // TODO: stupid cast
+            return cells[x][y];
         }
 
         @Override
@@ -363,12 +268,12 @@ public class Grid implements Iterable<Grid.Cell> {
             throw new UnsupportedOperationException();
         }
 
-        private void decorate(Decoration<Cell> decoration) {
-            cells[x][y] = (Grid.Cell) decoration.decorate((Cell) cells[x][y]);
+        /**
+         * Apply the given transformation to the current cell on the grid
+         * @param transformation
+         */
+        private void apply(Transformation<Cell> transformation) {
+            cells[x][y] = transformation.transform(cells[x][y]);
         }
-    }
-
-    static interface Decoration<T> {
-        T decorate(T t);
     }
 }

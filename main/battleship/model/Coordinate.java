@@ -1,6 +1,9 @@
 package battleship.model;
 
-public class Coordinate {
+/**
+ * Two-dimensional (x,y) coordinate
+ */
+public final class Coordinate {
     private final int x;
     private final int y;
 

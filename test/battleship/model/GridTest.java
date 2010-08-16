@@ -19,19 +19,19 @@ public class GridTest extends TestCase {
         // miss the ship
         final Coordinate xBoundary = new Coordinate(2, 0);
         assertFalse(grid.strike(xBoundary));
-        assertEquals(Grid.Cell.CellStatus.MISSED, grid.getCell(xBoundary).getStatus());
+        assertEquals(CellStatus.MISSED, grid.getCell(xBoundary).getStatus());
 
         final Coordinate yBoundary = new Coordinate(0, 1);
         assertFalse(grid.strike(yBoundary));
-        assertEquals(Grid.Cell.CellStatus.MISSED, grid.getCell(yBoundary).getStatus());
+        assertEquals(CellStatus.MISSED, grid.getCell(yBoundary).getStatus());
 
         assertTrue(grid.areAnyShipsAfloat());
         assertEquals(EnumSet.noneOf(Ship.class), grid.getSunkenShips());
 
         // hit the ship
-        assertEquals(Grid.Cell.CellStatus.PLACED, grid.getCell(origin).getStatus());
+        assertEquals(CellStatus.PLACED, grid.getCell(origin).getStatus());
         assertTrue(grid.strike(origin));
-        assertEquals(Grid.Cell.CellStatus.HIT, grid.getCell(origin).getStatus());
+        assertEquals(CellStatus.HIT, grid.getCell(origin).getStatus());
 
         // finish it off
         assertEquals(2, Ship.PATROL.length);
@@ -41,7 +41,7 @@ public class GridTest extends TestCase {
 
         // re-hit the ship
         assertFalse(grid.strike(origin));
-        assertEquals(Grid.Cell.CellStatus.HIT, grid.getCell(origin).getStatus());
+        assertEquals(CellStatus.HIT, grid.getCell(origin).getStatus());
     }
 
     public void testBattleshipPlacementWithOverlapAndRollback() throws Exception {
@@ -53,9 +53,9 @@ public class GridTest extends TestCase {
             fail("Should not be allowed to overlap ships");
         } catch (OverlappingException e) {
             // expected. check for proper rollback:
-            assertEquals(new Grid.Cell(), grid.getCell(new Coordinate(0, 0)));
-            assertEquals(new Grid.Cell(), grid.getCell(new Coordinate(1, 0)));
-            assertEquals(new Grid.Cell(), grid.getCell(new Coordinate(2, 0)));
+            assertEquals(new Cell(), grid.getCell(new Coordinate(0, 0)));
+            assertEquals(new Cell(), grid.getCell(new Coordinate(1, 0)));
+            assertEquals(new Cell(), grid.getCell(new Coordinate(2, 0)));
             assertEquals(Ship.PATROL,    grid.getCell(new Coordinate(3, 0)).getShip());
             assertEquals(Ship.PATROL,    grid.getCell(new Coordinate(4, 0)).getShip());
         }
@@ -79,7 +79,7 @@ public class GridTest extends TestCase {
             fail();
         } catch (OffTheGridException e) {
             // expected. make sure the cells on the board were rolled back:
-            assertEquals(new Grid.Cell(), grid.getCell(origin));
+            assertEquals(new Cell(), grid.getCell(origin));
         }
     }
 
@@ -98,14 +98,14 @@ public class GridTest extends TestCase {
         final Ship ship = Ship.SUBMARINE;
         grid.place(ship, new Coordinate(2,0));
 
-        final Iterator<Grid.Cell> iterator = grid.iterator();
+        final Iterator<Cell> iterator = grid.iterator();
 
-        assertNull(iterator.next().getShip());                      // 0,0
-        assertNull(iterator.next().getShip());                      // 1,0
+        assertNull(iterator.next().getShip());             // 0,0
+        assertNull(iterator.next().getShip());             // 1,0
         for(int s = 0; s < ship.length; s++) {
-            assertEquals(ship, iterator.next().getShip());          // 2~5,0
+            assertEquals(ship, iterator.next().getShip()); // 2~5,0
         }
-        assertNull(iterator.next().getShip());                      // 6,0
+        assertNull(iterator.next().getShip());             // 6,0
 
         try {
             iterator.remove();

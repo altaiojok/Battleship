@@ -4,8 +4,8 @@ import java.util.Stack;
 
 public class TestUserInterfaceSpy implements UserInterface {
 
-    private Stack<String> inputsStack = new Stack<String>();
-    private Stack<String> outputsStack = new Stack<String>();
+    private final Stack<String> inputsStack = new Stack<String>();
+    private final Stack<String> outputsStack = new Stack<String>();
 
     @Override
     public String in() {
