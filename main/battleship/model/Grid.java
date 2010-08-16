@@ -1,15 +1,13 @@
 package battleship.model;
 
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A standard battleship game grid of specified size. If no size is provided,
  * grid will default to DEFAULT_SIZE. Each cell on the Grid is populated
  * with a Cell instance, which maintains the state of ship placement and and hits.
  */
-public class Grid {
+public class Grid implements Iterable<Grid.Cell> {
     public static final int DEFAULT_SIZE = 10;
 
     private final int size;
@@ -45,10 +43,15 @@ public class Grid {
      * Reset the grid with all new cells.
      */
     void reset() {
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                cells[x][y] = new Cell();
-            }
+        GridIterator<Cell> iterator = iterator();
+        while(iterator.hasNext()) {
+            Cell c = iterator.next();
+            iterator.decorate(new Decoration<Cell>() {
+                @Override
+                public Cell decorate(Cell cell) {
+                    return new Cell();
+                }
+            });
         }
 
         sunkenShips.clear();
@@ -194,11 +197,9 @@ public class Grid {
     }
 
     private boolean matchingCellExists(CellMatcher matcher) {
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                if (matcher.match(cells[x][y])) {
-                    return true;
-                }
+        for (Cell c : this) {
+            if (matcher.match(c)) {
+                return true;
             }
         }
         return false;
@@ -207,14 +208,13 @@ public class Grid {
     public String display(boolean mask) {
         final StringBuilder sb = new StringBuilder();
 
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                final Cell.CellStatus cellStatus = cells[y][x].getStatus(); //flipped xy for display purposes
-                sb.append(cellStatus.display(mask));
-//                final Ship ship = cells[y][x].getShip();
-//                sb.append(ship != null ? ship.name().substring(0,1) : "#");
+        int colNum = 0;
+        for (Cell c : this) {
+            sb.append(c.getStatus().display(mask));
+            if(colNum++ == this.size) {
+                sb.append("\n");
+                colNum = 0;
             }
-            sb.append("\n");
         }
 
         return sb.toString();
@@ -330,5 +330,45 @@ public class Grid {
             }
 
         }
+    }
+
+    @Override
+    public GridIterator<Cell> iterator() {
+        return new GridIterator();
+    }
+
+    class GridIterator<Cell> implements Iterator<Cell> {
+        private int x = -1;
+        private int y = -1;
+
+        @Override
+        public boolean hasNext() {
+            return (x + 1 < size) || (y + 1 < size);
+        }
+
+        @Override
+        public Cell next() {
+            if(!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            
+            x = (x + 1 < size) ? x + 1 : 0;
+            y = (y + 1 < size) && (x == 0) ? y + 1 : y;
+
+            return (Cell) cells[x][y]; // TODO: stupid cast
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        private void decorate(Decoration<Cell> decoration) {
+            cells[x][y] = (Grid.Cell) decoration.decorate((Cell) cells[x][y]);
+        }
+    }
+
+    static interface Decoration<T> {
+        T decorate(T t);
     }
 }

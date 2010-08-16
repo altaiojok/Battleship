@@ -3,6 +3,7 @@ package battleship.model;
 import junit.framework.TestCase;
 
 import java.util.EnumSet;
+import java.util.Iterator;
 
 public class GridTest extends TestCase {
 
@@ -90,5 +91,25 @@ public class GridTest extends TestCase {
         } catch (OffTheGridException e) {
             // expected
         }
+    }
+
+    public void testGridIterator() throws Exception {
+        final Grid grid = new Grid();
+        final Ship ship = Ship.SUBMARINE;
+        grid.place(ship, new Coordinate(2,0));
+
+        final Iterator<Grid.Cell> iterator = grid.iterator();
+
+        assertNull(iterator.next().getShip());                      // 0,0
+        assertNull(iterator.next().getShip());                      // 1,0
+        for(int s = 0; s < ship.length; s++) {
+            assertEquals(ship, iterator.next().getShip());          // 2~5,0
+        }
+        assertNull(iterator.next().getShip());                      // 6,0
+
+        try {
+            iterator.remove();
+            fail();
+        } catch (UnsupportedOperationException e) {}
     }
 }
