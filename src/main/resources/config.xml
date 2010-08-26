@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="config.xsd">
+
+    <config>
+        <name>debugMode</name>
+        <value>false</value>
+        <type>boolean</type>
+    </config>
+
+    <config>
+        <name>gridSize</name>
+        <value>10</value>
+        <type>int</type>
+    </config>
+
+</configs>

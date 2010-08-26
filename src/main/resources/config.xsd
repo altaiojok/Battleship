@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="configs" type="configs"/>
+
+    <xsd:complexType name="configs">
+        <xsd:sequence>
+            <xsd:element name="config" type="config" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="config">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:string"/>
+            <xsd:element name="type" type="type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="int"/>
+            <xsd:enumeration value="boolean"/>
+            <xsd:enumeration value="string"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

@@ -1,5 +1,7 @@
 package battleship.model;
 
+import battleship.config.Configuration;
+
 import java.util.*;
 
 /**
@@ -8,7 +10,7 @@ import java.util.*;
  * with a Cell instance, which maintains the state of ship placement and and hits.
  */
 public class Grid implements Iterable<Cell> {
-    public static final int DEFAULT_SIZE = 10;
+    public static final int DEFAULT_SIZE = Configuration.gridSize;
 
     private final int size;
     private final Cell[][] cells;

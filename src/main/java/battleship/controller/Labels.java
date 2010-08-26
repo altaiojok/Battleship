@@ -10,7 +10,7 @@ class Labels {
 
     static {
         try {
-            labelResource = new PropertyResourceBundle(ClassLoader.getSystemResourceAsStream("battleship/controller/labels.properties"));
+            labelResource = new PropertyResourceBundle(ClassLoader.getSystemResourceAsStream("labels.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
